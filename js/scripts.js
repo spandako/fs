@@ -43,6 +43,8 @@ $(function() {
 		$(this).val(slugname);
 
 		if(definitions.attr("data-font") == "#new") {
+			var newKey = Object.keys(specification).length;
+
 			fontList.find('[data-name=#new]').attr('data-name', newKey);
 			definitions.attr('data-font', newKey);
 			// add specification
@@ -55,8 +57,6 @@ $(function() {
 					lineHeight: "1.2",
 					color: "#4d4d4d"
 				};
-			
-			var newKey = Object.keys(specification)[Object.keys(specification).length - 1];
 			
 			specification[newKey] = newFont;
 			
@@ -72,7 +72,7 @@ $(function() {
 
 			
 		} else {
-			specification[newKey]['name'] = slugname;
+			specification[currentFont]['name'] = slugname;
 		}
 
 	});
@@ -131,9 +131,9 @@ $(function() {
 		fontList.html('');
 
 		$.each(specification, function(id, properties) {
-			fontList.append('<span class="font" data-name="'+ id +'">'+ id +'</span>');
+			fontList.append('<span class="font" data-name="'+ id +'">'+ specification[id]['name'] +'</span>');
 			
-			$.each(specification[name], function(property, value) {
+			$.each(specification[id], function(property, value) {
 				if(property == 'url' && value != '') {
 					$('head').prepend(value);
 				} else {
