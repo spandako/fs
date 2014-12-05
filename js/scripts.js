@@ -35,6 +35,8 @@ $(function() {
 			var field = $(this);
 			field.val(specification[selectedFont][field.attr('name')]);
 		});
+
+		updatePreview(selectedFont);
 		
 	});
 
@@ -134,7 +136,7 @@ $(function() {
 			var craft = JSON.stringify(specification);
 			
 			generated.val(craft);
-			
+			updatePreview(currentFont);
 		}
 		
 	});
@@ -218,6 +220,18 @@ $(function() {
 		helpBox.toggleClass('show');
 	});
 
+	$('.show-preview').click(function() {
+		var previewText = $('#preview-text');
+		if(previewText.hasClass('show')) {
+			previewText.slideUp();
+			$(this).find('span').html('↓');
+		} else {
+			previewText.slideDown();
+			$(this).find('span').html('↑');
+		}
+		previewText.toggleClass('show');
+	});
+
 	$(document).click(function() {
 		if(showWebsafeFontsTrigger.hasClass('show')) {
 			toggleWebsafeFontsList();
@@ -234,7 +248,13 @@ $(function() {
 		websafeFontsList.toggleClass('show');
 	}
 
+	function updatePreview(font) {
+		$.each(specification[font], function(property, value) {
+			$('#preview-text').css(property, value);
+		});
+	}
+
 	function convertToSlug(Text) {
-    	return Text.toLowerCase().replace(/[^\w ]+/g,'').replace(/ +/g,'-');
+    	return Text.toLowerCase().replace(/[^\w-]+/g,'-').replace(/-+/g,'-');
 	}
 });

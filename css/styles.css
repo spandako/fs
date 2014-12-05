@@ -40,7 +40,7 @@ h3 {
 }
 
 .upper {
-	margin: 0 0 30px;
+	margin: 0 0 10px;
 	padding: 20px 0;
 	background: #fff;
 	border: 1px solid #ccc;
@@ -288,6 +288,44 @@ button:hover {
 
 .trigger:hover {
 	background: #aaa;
+}
+
+.middle {
+	padding-bottom: 30px;
+}
+
+.middle:before,
+.middle:after {
+	content: "";
+	display: table;
+	position: relative;
+	clear: both;
+	overflow: hidden;
+}
+
+.show-preview {
+	display: inline-block;
+	float: right;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+
+.show-preview span {
+	margin-right: 5px; 
+}
+
+#preview-text {
+	box-sizing: border-box;
+	display: none;
+	padding: 20px;
+	width: 100%;
+	height: 130px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-family: arial;
+	font-size: 14px;
+	line-height: 1.2;
+
 }
 /*
 @media (min-width: 1px) {
