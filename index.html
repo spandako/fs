@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Font Definitions</title>
+
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1><img class="logo" src="images/logo.png" alt="logo">font specification</h1>
+        
+        <span class="help-trigger" data-action="help-trigger">?</span>
+
+        <div class="help">
+            <h2>How to use:</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam quam accusantium iure assumenda nam recusandae debitis officia, impedit reiciendis? A deserunt, quibusdam expedita dolores voluptate quod aspernatur cum libero fuga, cupiditate, molestiae harum maxime minima debitis magnam nobis culpa! Recusandae eos qui nihil, similique esse officia iusto, enim placeat numquam ex tenetur, earum error sed, nostrum quae fugiat velit dicta aperiam. Optio in iste necessitatibus quod quidem dolor consectetur voluptatum modi totam minima suscipit, unde ducimus sit, assumenda, ipsum consequuntur placeat. Temporibus dolores odio voluptatum accusamus vel, nihil blanditiis, error dolore, quod illo, ipsam ut. Voluptatem culpa, sapiente accusamus itaque!</p>
+            <p>Repudiandae voluptatem voluptate quo totam, laborum culpa adipisci cumque! Laudantium aliquid expedita, officiis qui neque cumque error eaque nulla quae, inventore, asperiores, temporibus facere ullam doloremque mollitia suscipit dolorum eligendi maiores! Libero animi consequatur dicta blanditiis enim alias, maxime adipisci doloremque esse officia voluptatem iure beatae corrupti natus tempore optio eaque quod nulla expedita atque ullam nemo eius repellat. Eos, velit, nihil. Sequi earum tempore et quae quidem modi. Dolorum quia qui veritatis beatae!</p>
+        </div>
+
+        <div class="upper">
+            <!--<h3>your fonts:</h3>-->
+
+            <div class="defined-fonts">
+                    
+                <div id="font-list">
+                    <span class="font" data-name="#new"><span class="no-fonts">Start adding new fonts or paste JSON in the box below...</span></span>
+                </div>
+                
+                <button data-action="add-font">+add Font</button>
+            </div>
+            
+            <form id="definitions" data-font="#new">
+                <fieldset class="fieldset">
+                    <div class="field">
+                        <label>name</label>
+                        <div class="input-cell"><input type="text" name="name" value="" placeholder="New font name..."></div>
+                        <div class="triggers"></div>
+                    </div>
+                    <div class="field">
+                        <label>font-family</label>
+                        <div class="input-cell"><input type="text" name="fontFamily" value="" placeholder="Arial, Helvetica, sans-serif"></div>
+                        <div class="triggers">
+                            <div id="websafe-fonts-trigger" data-action="show-websafe-fonts">
+                                <div id="websafe-fonts">
+                                    <span class="webfont-groups">Serif Fonts</span>
+                                    <div>Georgia, serif</div>
+                                    <div>"Palatino Linotype", "Book Antiqua", Palatino, serif</div>
+                                    <div>"Times New Roman", Times, serif</div>
+                                    <span class="webfont-groups">Sans-Serif Fonts</span>
+                                    <div>Arial, Helvetica, sans-serif</div>
+                                    <div>"Arial Black", Gadget, sans-serif</div>
+                                    <div>"Comic Sans MS", cursive, sans-serif</div>
+                                    <div>Impact, Charcoal, sans-serif</div>
+                                    <div>"Lucida Sans Unicode", "Lucida Grande", sans-serif</div>
+                                    <div>Tahoma, Geneva, sans-serif</div>
+                                    <div>"Trebuchet MS", Helvetica, sans-serif</div>
+                                    <div>Verdana, Geneva, sans-serif</div>
+                                    <span class="webfont-groups">Monospace Fonts</span>
+                                    <div>"Courier New", Courier, monospace</div>
+                                    <div>"Lucida Console", Monaco, monospace</div>
+                                </div>
+                                <span class="icon trigger">&darr;</span>
+                            </div>
+                            <span class="trigger" data-action="show-webfonts-input">+</span>
+                        </div>
+                    </div>
+                    <div class="field webfonts-url hidden">
+                        <label>webfont url</label>
+                        <div class="input-cell"><input type="text" name="url" value="" placeholder="<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>"></div>
+                        <div class="triggers">
+                            <span class="close-url trigger" data-action="hide-webfonts-input">x</span>
+                            <span class="trigger">?</span>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>font-size</label>
+                        <div class="input-cell"><input type="text" name="fontSize" value="" placeholder="14px"></div>
+                        <div class="triggers"></div>
+                    </div>
+                    <div class="field">
+                        <label>font-weight</label>
+                        <div class="input-cell"><input type="text" name="fontWeight" value="" placeholder="normal"></div>
+                        <div class="triggers"></div>
+                    </div>
+                    <div class="field">
+                        <label>font-style</label>
+                        <div class="input-cell"><input type="text" name="fontStyle" value="" placeholder="normal"></div>
+                        <div class="triggers"></div>
+                    </div>
+                    <div class="field">
+                        <label>line-height</label>
+                        <div class="input-cell"><input type="text" name="lineHeight" value="" placeholder="1.2"></div>
+                        <div class="triggers"></div>
+                    </div>
+                    <div class="field">
+                        <label>text-decoration</label>
+                        <div class="input-cell"><input type="text" name="textDecoration" value="" placeholder="none"></div>
+                        <div class="triggers"></div>
+                    </div>
+                    <div class="field">
+                        <label>color</label>
+                        <div class="input-cell"><input type="text" name="color" value="" placeholder="#4c4c4c"></div>
+                        <div class="triggers"></div>
+                    </div>
+                </fieldset>
+                <button data-action="add-font">+add Font</button>
+            </form>
+
+        </div>
+
+        <div class="lower">
+            <span>JSON document:</span>
+            <textarea id="generated-document" placehoolder="generated document"></textarea>
+        </div>
+
+    </div>
+
+    <script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
