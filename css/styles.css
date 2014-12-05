@@ -135,8 +135,6 @@ h3 {
 	border-radius: 3px;
 }
 
-
-
 .hidden {
 	display: none;
 }
@@ -201,6 +199,11 @@ h3 {
 }
 #websafe-fonts div:hover {
 	background: #dfdfdf;
+}
+
+#websafe-fonts .webfont-option {
+	margin-top: 5px;
+	border-top: 1px solid #ccc;
 }
 
 .lower {

@@ -11,6 +11,10 @@ $(function() {
 	var helpBox = $('.help');
 	var specification = {};
 
+	websafeFontsList.find('div').each(function() {
+		$(this).css('font-family',$(this).html());
+	});
+
 	addFont.click(function(e) {
 		if(!(fontList.find('[data-name=#new]').length)) {
 			fontList.append('<span class="font" data-name="#new"></span>');
@@ -89,12 +93,33 @@ $(function() {
 		$('.webfonts-url').addClass('hidden');
 	});
 
+	definitions.find('[name=fontFamily]').change(function() {
+		var changedFontFamily = $(this).val();
+		var skipUpdateList = false;
+		
+		websafeFontsList.find('div').each(function() {
+			if($(this).text() == changedFontFamily) {
+				skipUpdateList = true;
+			}
+		});
+
+		if(!skipUpdateList) {
+			websafeFontsList.append('<div class="webfont-option" style="font-family:'+changedFontFamily+';">'+ changedFontFamily +'</div>');
+		}
+	});
+
 	definitions.find('input').keyup(function() {
 		var currentFont = definitions.attr('data-font');
 		var attribute = $(this).attr('name');
 		var value = $.trim($(this).val());
 
 		if($(this).attr('name') == 'name' && definitions.attr("data-font") != "#new") {
+			specification[currentFont][attribute] = value;
+			fontList.find('[data-name='+currentFont+']').css(attribute, value);
+
+			var craft = JSON.stringify(specification);
+			
+			generated.val(craft);
 			
 		} else if(definitions.attr("data-font") != "#new" && $(this).attr('name') != 'name' && $(this).attr('name') != 'url') {
 			// update specification
@@ -107,7 +132,9 @@ $(function() {
 			fontList.find('[data-name='+currentFont+']').css(attribute, value);
 
 			var craft = JSON.stringify(specification);
-			generated.text(craft);
+			
+			generated.val(craft);
+			
 		}
 		
 	});
@@ -134,6 +161,20 @@ $(function() {
 			fontList.append('<span class="font" data-name="'+ id +'">'+ specification[id]['name'] +'</span>');
 			
 			$.each(specification[id], function(property, value) {
+				if(property == 'fontFamily' && value != '') {
+					var skipUpdateList = false;
+					
+					websafeFontsList.find('div').each(function() {
+						if($(this).text() == value) {
+							skipUpdateList = true;
+						}
+					});
+
+					if(!skipUpdateList) {
+						websafeFontsList.append('<div class="webfont-option" style="font-family:'+value+';">'+ value +'</div>');
+					}
+				}
+
 				if(property == 'url' && value != '') {
 					$('head').prepend(value);
 				} else {
